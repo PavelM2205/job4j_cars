@@ -12,5 +12,6 @@
     <include file="scripts/002_ddl_create_auto_post_table.sql" relativeToChangelogFile="true"></include>
     <include file="scripts/003_dml_insert_into_auto_user.sql" relativeToChangelogFile="true"></include>
     <include file="scripts/004_ddl_create_price_history_table.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/005_ddl_create_participants_table.sql" relativeToChangelogFile="true"></include>
 
 </databaseChangeLog>
