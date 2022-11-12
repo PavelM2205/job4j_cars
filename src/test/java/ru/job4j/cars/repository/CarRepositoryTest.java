@@ -56,11 +56,6 @@ public class CarRepositoryTest {
     }
 
     @Test
-    public void forcedClean() {
-        cleanTables();
-    }
-
-    @Test
     public void whenCreateThenFindByIdReturnsCarWithNotNullId() {
         CarRepository carRepository = new CarRepository(cr);
         EngineRepository engineRepository = new EngineRepository(cr);

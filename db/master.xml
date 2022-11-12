@@ -18,6 +18,8 @@
     <include file="scripts/008_ddl_create_car_table.sql" relativeToChangelogFile="true"></include>
     <include file="scripts/009_ddl_create_owner_history_table.sql" relativeToChangelogFile="true"></include>
     <include file="scripts/010_ddl_add_column_for_auto_post.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/011_ddl_add_column_for_auto_post.sql" relativeToChangelogFile="true"></include>
+
 
 
 </databaseChangeLog>

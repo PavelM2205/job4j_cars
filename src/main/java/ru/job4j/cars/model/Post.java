@@ -17,7 +17,8 @@ public class Post {
     @EqualsAndHashCode.Include
     private int id;
     private String text;
-    private LocalDateTime created;
+    private LocalDateTime created = LocalDateTime.now();
+    private byte[] photo;
 
     @ManyToOne
     @JoinColumn(name = "auto_user_id")
