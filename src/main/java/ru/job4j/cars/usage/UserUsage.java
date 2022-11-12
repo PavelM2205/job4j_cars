@@ -7,7 +7,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.job4j.cars.model.User;
-import ru.job4j.cars.persistence.UserRepository;
+import ru.job4j.cars.repository.CrudRepository;
+import ru.job4j.cars.repository.UserRepository;
 
 public class UserUsage {
     private static final Logger LOG = LoggerFactory.getLogger(UserUsage.class);
@@ -17,7 +18,8 @@ public class UserUsage {
                 .build();
         try (SessionFactory sf = new MetadataSources(registry).buildMetadata()
                 .buildSessionFactory()) {
-            UserRepository repo = new UserRepository(sf);
+            CrudRepository cr = new CrudRepository(sf);
+            UserRepository repo = new UserRepository(cr);
             var user = new User();
             user.setLogin("admin113");
             user.setPassword("admin113");

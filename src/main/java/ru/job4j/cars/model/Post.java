@@ -34,4 +34,8 @@ public class Post {
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
     private List<User> participants;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
 }
