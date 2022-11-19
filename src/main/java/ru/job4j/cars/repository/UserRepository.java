@@ -13,7 +13,7 @@ public class UserRepository {
     private static final String FIND_BY_ID =
             "FROM User WHERE id = :fId";
     private static final String FIND_BY_LIKE_LOGIN =
-            "FROM User as u WHERE u.login LIKE %:fLike%";
+            "FROM User as u WHERE u.login LIKE :fLike";
     private static final String FIND_BY_LOGIN =
             "FROM User WHERE login = :fLogin";
     private final CrudRepository crudRepository;
@@ -45,8 +45,8 @@ public class UserRepository {
     }
 
     public List<User> findByLikeLogin(String key) {
-        return crudRepository.query(FIND_BY_LIKE_LOGIN, Map.of("fLike", key),
-                User.class);
+        return crudRepository.query(FIND_BY_LIKE_LOGIN, Map.of("fLike",
+                        String.format("%%%s%%", key)), User.class);
     }
 
     public Optional<User> findByLogin(String login) {

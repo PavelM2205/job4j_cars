@@ -51,16 +51,6 @@ class PostRepositoryTest {
     }
 
     @Test
-    public void forceClean() {
-        cleanTables();
-    }
-
-    @Test
-    public void forcedClean() {
-        cleanTables();
-    }
-
-    @Test
     void whenFindCarsForCurrentDate() {
         PostRepository postRepository = new PostRepository(cr);
         Post post1 = new Post();
