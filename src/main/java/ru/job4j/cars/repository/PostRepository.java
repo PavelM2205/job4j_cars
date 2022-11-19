@@ -18,7 +18,7 @@ public class PostRepository {
     private static final String FIND_ALL = "FROM Post";
     private static final String FIND_BY_ID = "FROM Post WHERE id = :fId";
     private static final String FIND_CARS_FOR_CURRENT_DAY =
-            "FROM Post WHERE created BETWEEN :fNowMinus24HDate AND :fNowDate";
+            "FROM Post WHERE created BETWEEN :fFrom AND :fTo";
     private static final String FIND_POSTS_WITH_PHOTO =
             "FROM Post WHERE photo IS NOT NULL";
     private static final String FIND_POSTS_WITH_DEFINITE_MAKE_OF_CAR =
@@ -58,7 +58,7 @@ public class PostRepository {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime minus24Hours = now.minusHours(24);
         return crudRepository.query(FIND_CARS_FOR_CURRENT_DAY,
-                Map.of("fNowDate", now, "fNowMinus24HDate", minus24Hours),
+                Map.of("fTo", now, "fFrom", minus24Hours),
                 Post.class);
     }
 
