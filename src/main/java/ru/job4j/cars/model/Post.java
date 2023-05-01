@@ -16,7 +16,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private int id;
+    private int price;
     private String text;
+    @Column(name = "is_sold")
+    private boolean isSold;
     private LocalDateTime created = LocalDateTime.now();
     private byte[] photo;
 
@@ -39,4 +42,8 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;
+
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 }
