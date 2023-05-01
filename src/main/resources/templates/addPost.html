@@ -1,0 +1,107 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <title>job4j_cars</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div style="text-align: center">
+            <h4 style="margin-bottom: 20px; margin-top: 5px">Разместить объявление</h4>
+        </div>
+        <form method="post" th:action="@{/addPost}" enctype="multipart/form-data">
+            <div class="row">
+            <div class="col-6">
+            <div class="mb-3">
+                <label for="car.id">Марка автомобиля</label>
+                <select class="form-select" id="car.id" name="car.id">
+                    <option selected></option>
+                    <option th:each="car : ${cars}" th:text="${car.getCarBrand().getName()}" th:value="${car.getCarBrand().getId()}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="car.engine.id">Двигатель</label>
+                <select class="form-select" id="car.engine.id" name="car.engine.id">
+                    <option selected></option>
+                    <option th:each="engine : ${engines}" th:text="${engine.getName()}" th:value="${engine.getId()}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="car.carBody.id">Кузов</label>
+                <select class="form-select" id="car.carBody.id" name="car.carBody.id">
+                    <option selected></option>
+                    <option th:each="carBody : ${carBodies}" th:text="${carBody.getName()}" th:value="${carBody.getId()}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="car.wheelDrive.id">Привод</label>
+                <select class="form-select" id="car.wheelDrive.id" name="car.wheelDrive.id">
+                    <option selected></option>
+                    <option th:each="wheelDrive : ${wheelDrives}" th:text="${wheelDrive.getName()}" th:value="${wheelDrive.getId()}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="car.transmission.id">Коробка</label>
+                <select class="form-select" id="car.transmission.id" name="car.transmission.id">
+                    <option selected></option>
+                    <option th:each="transmission : ${transmissions}" th:text="${transmission.getName()}" th:value="${transmission.getId()}"></option>
+                </select>
+            </div>
+            </div>
+
+            <div class="col-6">
+            <div class="mb-3">
+                <label for="car.carColour.id">Цвет</label>
+                <select class="form-select" id="car.carColour.id" name="car.carColour.id">
+                    <option selected></option>
+                    <option th:each="carColour : ${carColours}" th:text="${carColour.getName()}" th:value="${carColour.getId()}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="city.id">Город</label>
+                <select class="form-select" id="city.id" name="city.id">
+                    <option selected></option>
+                    <option th:each="city : ${cities}" th:text="${city.getName()}" th:value="${city.getId()}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="car.year.id">Год</label>
+                <select class="form-select" id="car.year.id" name="car.year.id">
+                    <option selected></option>
+                    <option th:each="year : ${years}" th:text="${year.getYear()}" th:value="${year.getId()}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="car.mileage" class="form-label" style="margin: 0px">Пробег, км.</label>
+                <input type="text" class="form-control" id="car.mileage" name="car.mileage">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label" style="margin: 0px">Цена, руб.</label>
+                <input type="text" class="form-control" id="price" name="price">
+            </div>
+            </div>
+            </div>
+            <div class="mb-3">
+                <label for="text" class="form-label">Описание</label>
+                <textarea class="form-control" id="text" name="text" cols="80" rows="5"></textarea>
+            </div>
+            <div class="col-5">
+            <div class="mb-3">
+                <label for="file" class="form-label">Добавить фотографию</label>
+                <input type="file" class="form-control" id="file" name="file">
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

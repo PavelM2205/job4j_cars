@@ -6,7 +6,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
     <title>job4j_cars</title>
 </head>
 <body>
@@ -35,20 +37,17 @@
                 </div>
             </div>
         </nav>
-        <div th:each="post : ${posts}">
-        <div class="card mb-3" style="height: 14rem">
-            <div class="row g-0">
-                <div class="col-md-4">
+        <div class="card mb-3" style="height: 27rem">
+            <div class="row g-0" style="margin-bottom: -20px">
+                <div class="col-md-7">
                     <img th:src="@{|/getPostPhoto/${post.getId()}|}" class="img-fluid rounded-start" alt="...">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-5">
                     <div class="card-body">
                         <table class="table" style="border-color: white">
                             <tr>
                                 <h5 class="card-title">
-                                    <a th:href="@{|/postPage/${post.id}|}">
-                                        <p th:text="${post.getCar().getCarBrand().getName()}"></p>
-                                    </a>
+                                    <p th:text="${post.getCar().getCarBrand().getName()}"></p>
                                     <p>
                                         <span th:text="${#numbers.formatInteger(post.getPrice(), 0, 'WHITESPACE')}"></span>
                                         <span> руб.</span>
@@ -57,37 +56,53 @@
                             </tr>
 
                             <tr>
-                                <td style="width: 35%">
-                                    <p class="card-text" th:text="${post.getCar().getEngine().getName()}"></p>
-                                    <p class="card-text" th:text="${post.getCar().getWheelDrive().getName()}"></p>
-                                    <p class="card-text" th:text="${post.getCar().getTransmission().getName()}"></p>
-                                </td>
-                                <td style="width: 35%">
+                                <td style="width: 50%">
+                                    <p class="card-text" >
+                                        <span style="color: darkgray">Двигатель: </span>
+                                        <span th:text="${post.getCar().getEngine().getName()}"></span>
+                                    </p>
+                                    <p class="card-text">
+                                        <span style="color: darkgray">Привод: </span>
+                                        <span th:text="${post.getCar().getWheelDrive().getName()}"></span>
+                                    </p>
+                                    <p class="card-text">
+                                        <span style="color: darkgray">Коробка: </span>
+                                        <span th:text="${post.getCar().getTransmission().getName()}"></span>
+                                    </p>
                                     <p>
+                                        <span style="color: darkgray">Пробег: </span>
                                         <span th:text="${#numbers.formatInteger(post.getCar().getMileage(), 0, 'WHITESPACE')}"></span>
                                         <span> км.</span>
                                     </p>
                                     <p>
+                                        <span style="color: darkgray">Год: </span>
                                         <span th:text="${post.getCar().getYear().getYear()}"></span>
                                         <span> г.</span>
                                     </p>
-                                    <p th:text="${post.getCity().getName()}"></p>
+                                    <p>
+                                        <span style="color: darkgray">Город: </span>
+                                        <span th:text="${post.getCity().getName()}"></span>
+                                    </p>
+                                    <p>
+                                        <span style="color: darkgray">Кузов: </span>
+                                        <span th:text="${post.getCar().getCarBody().getName()}"></span>
+                                    </p>
+                                    <p>
+                                        <span style="color: darkgray">Цвет: </span>
+                                        <span th:text="${post.getCar().getCarColour().getName()}"></span>
+                                    </p>
                                 </td>
-                                <td th:if="${post.isSold() == true}" style="font-size: 180%; color: red; width: 30%">Продано</td>
-                                <td th:if="${post.isSold() == false}" style="width: 30%"></td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
+            <div>
+                <p style="font-size: larger; font-weight: bold">Комментарий продавца: </p>
+                <p th:text="${post.getText()}"></p>
+            </div>
         </div>
-        </div>
-        </form>
     </div>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous">
-    </script>
 </body>
 </html>
