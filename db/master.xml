@@ -19,6 +19,33 @@
     <include file="scripts/009_ddl_create_owner_history_table.sql" relativeToChangelogFile="true"></include>
     <include file="scripts/010_ddl_add_column_for_auto_post.sql" relativeToChangelogFile="true"></include>
     <include file="scripts/011_ddl_add_column_for_auto_post.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/012_ddl_create_transmission_table.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/013_dml_insert_into_transmission.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/014_ddl_create_body_car_table.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/015_dml_insert_into_body_car.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/016_ddl_create_wheel_drive_table.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/017_dml_insert_into_wheel_drive.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/018_ddl_create_car_colour_table.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/019_dml_insert_into_car_colour.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/020_dml_insert_into_engine.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/021_ddl_create_year_table.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/022_ddl_create_city_table.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/023_insert_into_city.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/024_dml_insert_into_year.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/025_ddl_add_column_for_auto_post.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/026_ddl_create_car_brand_table.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/027_dml_insert_into_car_brand.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/028_ddl_add_column_for_car.sql" relativeToChangelogFile="true"></include>
+    <include file="scripts/029_dml_insert_into_car_and_auto_post.sql" relativeToChangelogFile="true"></include>
+
+
+
+
+
+
+
+
+
 
 
 

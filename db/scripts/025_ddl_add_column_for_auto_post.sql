@@ -1,0 +1,3 @@
+ALTER TABLE auto_post ADD COLUMN city_id INT REFERENCES city(id);
+ALTER TABLE auto_post ADD COLUMN price INT NOT NULL;
+ALTER TABLE auto_post ADD COLUMN is_sold BOOLEAN;

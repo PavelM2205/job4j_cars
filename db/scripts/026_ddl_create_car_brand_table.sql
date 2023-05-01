@@ -1,0 +1,4 @@
+CREATE TABLE car_brand (
+    id SERIAL PRIMARY KEY ,
+    name VARCHAR UNIQUE
+);

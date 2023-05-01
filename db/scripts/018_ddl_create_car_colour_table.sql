@@ -1,0 +1,4 @@
+CREATE TABLE car_colour (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL UNIQUE
+);

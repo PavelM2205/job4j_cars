@@ -15,7 +15,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private int id;
-    private String name;
+    private int mileage;
 
     @ManyToOne
     @JoinColumn(name = "engine_id")
@@ -24,6 +24,30 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "driver_id")
     private Driver driver;
+
+    @ManyToOne
+    @JoinColumn(name = "transmission_id")
+    private Transmission transmission;
+
+    @ManyToOne
+    @JoinColumn(name = "car_body_id")
+    private CarBody carBody;
+
+    @ManyToOne
+    @JoinColumn(name = "wheel_drive_id")
+    private WheelDrive wheelDrive;
+
+    @ManyToOne
+    @JoinColumn(name = "car_colour_id")
+    private CarColour carColour;
+
+    @ManyToOne
+    @JoinColumn(name = "year_id")
+    private Year year;
+
+    @ManyToOne
+    @JoinColumn(name = "car_brand_id")
+    private CarBrand carBrand;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
