@@ -20,17 +20,29 @@
                             <a class="nav-link active" aria-current="page" href="#">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@{}">Все объявления</a>
+                            <a class="nav-link" th:href="@{/index}">Все объявления</a>
                         </li>
+                        <div th:if="${user} != null">
                         <li class="nav-item">
-                            <a class="nav-link" href="@{}">Мои объявления</a>
+                            <a class="nav-link" th:href="@{|/userPosts/${user.getId()}|}">Мои объявления</a>
                         </li>
+                        </div>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/addPostPage}">Добавить объявление</a>
                         </li>
+                        <div th:if="${user} == null">
                         <li class="nav-item">
-                            <a class="nav-link" href="@{}">Войти</a>
+                            <a class="nav-link" th:href="@{/loginPage}">Войти</a>
                         </li>
+                        </div>
+                        <div th:if="${user} != null">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/logout}">Выйти
+                                    <span>|</span>
+                                    <span th:text="${user.getLogin()}"></span>
+                                </a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>

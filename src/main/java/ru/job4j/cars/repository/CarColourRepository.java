@@ -22,5 +22,4 @@ public class CarColourRepository {
     public Optional<CarColour> findById(int id) {
         return crudRepository.optional(FIND_BY_ID, Map.of("fId", id), CarColour.class);
     }
-
 }

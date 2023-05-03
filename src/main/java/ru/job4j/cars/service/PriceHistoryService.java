@@ -35,17 +35,4 @@ public class PriceHistoryService {
         }
         return optPriceHistory.get();
     }
-
-//    public void checkAndChangePrice(int postId, long after) {
-//        PriceHistory lastPrice = this.findLast(postId);
-//        if (lastPrice.getAfter() != after) {
-//            PriceHistory newPrice = new PriceHistory();
-//            newPrice.setBefore(lastPrice.getAfter());
-//            newPrice.setAfter(after);
-//        }
-//
-//
-//        result.setAfter((this.findLast().getAfter()));
-//        this.create(result);
-//    }
 }

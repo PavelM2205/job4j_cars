@@ -1,7 +1,3 @@
--- INSERT INTO auto_user VALUES (1, 'login_1', 'password_1'), (2, 'login_2', 'password_2');
-
--- INSERT INTO driver VALUES (1, 'driver_1', 1), (2, 'driver_2', 2);
-
 INSERT INTO car (car_brand_id, engine_id, car_body_id, wheel_drive_id, car_colour_id,
                  transmission_id, year_id, mileage)
     VALUES ((SELECT id FROM car_brand WHERE name = 'BMW'),
@@ -30,7 +26,7 @@ INSERT INTO auto_post (text, auto_user_id, car_id, city_id, photo, price, is_sol
     VALUES ('text_1', (SELECT id FROM auto_user WHERE login = 'Ivanov'),
            (SELECT id FROM car WHERE car_brand_id =
                                      (SELECT id FROM car_brand WHERE name = 'BMW')),
-           (SELECT id FROM city WHERE name = 'Москва'), '{1, 2}', 1200000, FALSE),
+           (SELECT id FROM city WHERE name = 'Москва'), '{1,2}', 1200000, FALSE),
            ('text_2', (SELECT id FROM auto_user WHERE login = 'Petrov'),
            (SELECT id FROM car WHERE car_brand_id =
                                       (SELECT id FROM car_brand WHERE name = 'Toyota')),
