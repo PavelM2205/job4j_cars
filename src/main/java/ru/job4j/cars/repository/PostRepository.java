@@ -23,6 +23,8 @@ public class PostRepository {
             "FROM Post WHERE photo IS NOT NULL";
     private static final String FIND_POSTS_WITH_DEFINITE_MAKE_OF_CAR =
             "FROM Post JOIN FETCH car as c WHERE c.name LIKE :fName";
+    private static final String FIND_POSTS_FOR_DEFINITE_USER =
+            "FROM Post WHERE user.id = :fId";
     private final CrudRepository crudRepository;
 
     public Optional<Post> create(Post post) {
@@ -69,5 +71,10 @@ public class PostRepository {
     public List<Post> findPostsWithDefiniteMakeOfCar(String name) {
         return crudRepository.query(FIND_POSTS_WITH_DEFINITE_MAKE_OF_CAR,
                 Map.of("fName", String.format("%%%s%%", name)), Post.class);
+    }
+
+    public List<Post> findPostsForDefiniteUser(int userId) {
+        return crudRepository.query(FIND_POSTS_FOR_DEFINITE_USER, Map.of("fId", userId),
+                Post.class);
     }
 }

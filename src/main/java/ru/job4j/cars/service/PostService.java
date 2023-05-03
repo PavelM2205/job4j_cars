@@ -53,4 +53,8 @@ public class PostService {
     public List<Post> findPostsWithDefiniteMakeOfCar(String name) {
         return postRepository.findPostsWithDefiniteMakeOfCar(name);
     }
+
+    public List<Post> findPostsForDefiniteUser(int userId) {
+        return postRepository.findPostsForDefiniteUser(userId);
+    }
 }

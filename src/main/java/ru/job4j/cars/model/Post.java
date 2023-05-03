@@ -39,7 +39,7 @@ public class Post {
     )
     private List<User> participants;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "car_id")
     private Car car;
 

@@ -1,6 +1,8 @@
 package ru.job4j.cars.repository;
 
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.job4j.cars.model.User;
 
@@ -11,6 +13,7 @@ import java.util.Optional;
 @Repository
 @AllArgsConstructor
 public class UserRepository {
+    private static final Logger LOG = LoggerFactory.getLogger(UserRepository.class);
     private static final String FIND_ALL = "FROM User";
     private static final String FIND_BY_ID =
             "FROM User WHERE id = :fId";
@@ -18,12 +21,18 @@ public class UserRepository {
             "FROM User as u WHERE u.login LIKE :fLike";
     private static final String FIND_BY_LOGIN =
             "FROM User WHERE login = :fLogin";
+    private static final String FIND_BY_LOGIN_AND_PASSWORD =
+            "FROM User as u WHERE u.login = :fLogin AND u.password = :fPassword";
     private final CrudRepository crudRepository;
 
     public Optional<User> create(User user) {
         Optional<User> result = Optional.empty();
-        crudRepository.run(session -> session.persist(user));
-        result = Optional.of(user);
+        try {
+            crudRepository.run(session -> session.persist(user));
+            result = Optional.of(user);
+        } catch (Exception exc) {
+            LOG.error("Exception when add User into DB: ", exc);
+        }
         return result;
     }
 
@@ -54,5 +63,10 @@ public class UserRepository {
     public Optional<User> findByLogin(String login) {
         return crudRepository.optional(FIND_BY_LOGIN, Map.of("fLogin", login),
                 User.class);
+    }
+
+    public Optional<User> findByLoginAndPassword(String login, String password) {
+        return crudRepository.optional(FIND_BY_LOGIN_AND_PASSWORD,
+                Map.of("fLogin", login, "fPassword", password), User.class);
     }
 }

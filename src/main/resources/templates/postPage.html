@@ -22,22 +22,34 @@
                             <a class="nav-link active" aria-current="page" href="#">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@{}">Все объявления</a>
+                            <a class="nav-link" th:href="@{/index}">Все объявления</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@{}">Мои объявления</a>
-                        </li>
+                        <div th:if="${user} != null">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{|/userPosts/${user.getId()}|}">Мои объявления</a>
+                            </li>
+                        </div>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/addPostPage}">Добавить объявление</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@{}">Войти</a>
-                        </li>
+                        <div th:if="${user} == null">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/loginPage}">Войти</a>
+                            </li>
+                        </div>
+                        <div th:if="${user} != null">
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/logout}">Выйти
+                                    <span>|</span>
+                                    <span th:text="${user.getLogin()}"></span>
+                                </a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="card mb-3" style="height: 27rem">
+        <div class="card mb-3" style="height: 26rem; width: 100rem">
             <div class="row g-0" style="margin-bottom: -20px">
                 <div class="col-md-7">
                     <img th:src="@{|/getPostPhoto/${post.getId()}|}" class="img-fluid rounded-start" alt="...">
@@ -54,9 +66,8 @@
                                     </p>
                                 </h5>
                             </tr>
-
                             <tr>
-                                <td style="width: 50%">
+                                <td style="width: 60%">
                                     <p class="card-text" >
                                         <span style="color: darkgray">Двигатель: </span>
                                         <span th:text="${post.getCar().getEngine().getName()}"></span>
@@ -92,14 +103,32 @@
                                         <span th:text="${post.getCar().getCarColour().getName()}"></span>
                                     </p>
                                 </td>
+                                <td style="width: 40%" th:if="${post.isSold() == true}">
+                                    <p style="font-size: 150%; color: red; width: 100%">Продано</p>
+                                </td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="row">
+            <div class="col-6">
                 <p style="font-size: larger; font-weight: bold">Комментарий продавца: </p>
                 <p th:text="${post.getText()}"></p>
+            </div>
+            <div class="col-6" th:if="${isOwn} == true">
+                <form method="POST" th:action="@{/editPost}">
+                    <input type="hidden" name="postId" th:value="${post.getId()}">
+                    <select class="form-select" aria-label="Пример выбора по умолчанию" name="status">
+                        <option selected>Изменить статус объявления</option>
+                        <option value="false">Активно</option>
+                        <option value="true">Продано</option>
+                    </select>
+                    <label class="form-label" style="margin-top: 2%">Изменить стоимость:</label>
+                    <input type="text" class="form-control" th:value="${post.getPrice()}" name="price">
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1%">Сохранить</button>
+                </form>
+            </div>
             </div>
         </div>
     </div>
