@@ -1,4 +1,4 @@
-CREATE TABLE year (
+CREATE TABLE auto_year (
     id SERIAL PRIMARY KEY,
-    year INT
+    year_value INT UNIQUE
 );
