@@ -27,12 +27,19 @@ public class PriceHistoryService {
         return priceHistoryRepository.findAll();
     }
 
-    public PriceHistory findLast(int postId) {
-        Optional<PriceHistory> optPriceHistory =
-                priceHistoryRepository.findLast(postId);
+    public PriceHistory findById(int id) {
+        Optional<PriceHistory> optPriceHistory = priceHistoryRepository.findById(id);
         if (optPriceHistory.isEmpty()) {
             throw new NoSuchElementException("PriceHistory is not found");
         }
         return optPriceHistory.get();
+    }
+
+    public void update(PriceHistory priceHistory) {
+        priceHistoryRepository.update(priceHistory);
+    }
+
+    public void delete(int id) {
+        priceHistoryRepository.delete(id);
     }
 }

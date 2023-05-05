@@ -23,7 +23,7 @@ public class PostRepository {
     private static final String FIND_POSTS_WITH_PHOTO =
             "FROM Post WHERE photo IS NOT NULL";
     private static final String FIND_POSTS_WITH_DEFINITE_MAKE_OF_CAR =
-            "FROM Post JOIN FETCH car as c WHERE c.name LIKE :fName";
+            "FROM Post JOIN FETCH car as c WHERE c.carBrand.name LIKE :fName";
     private static final String FIND_POSTS_FOR_DEFINITE_USER =
             "FROM Post WHERE user.id = :fId";
     private final CrudRepository crudRepository;
@@ -86,18 +86,23 @@ public class PostRepository {
 
     private void initializationInsertPhoto() {
         try {
-            Post post1 = crudRepository.query(
-                    "From Post as p WHERE p.car.carBrand.name = 'BMW'", Post.class).get(0);
-            post1.setPhoto(Files.readAllBytes(Path.of("src/main/resources/static/BMW.webp")));
-            this.update(post1);
-            Post post2 = crudRepository.query(
-                    "From Post as p WHERE p.car.carBrand.name = 'Toyota'", Post.class).get(0);
-            post2.setPhoto(Files.readAllBytes(Path.of("src/main/resources/static/Toyota.webp")));
-            this.update(post2);
-            Post post3 = crudRepository.query(
-                    "From Post as p WHERE p.car.carBrand.name = 'KIA'", Post.class).get(0);
-            post3.setPhoto(Files.readAllBytes(Path.of("src/main/resources/static/KIA.webp")));
-            this.update(post3);
+            Optional<Post> optPost1 = crudRepository.optional(
+                    "From Post as p WHERE p.car.carBrand.name = 'BMW'", Post.class);
+            Optional<Post> optPost2 = crudRepository.optional(
+                    "From Post as p WHERE p.car.carBrand.name = 'Toyota'", Post.class);
+            Optional<Post> optPost3 = crudRepository.optional(
+                    "From Post as p WHERE p.car.carBrand.name = 'KIA'", Post.class);
+            if (optPost1.isPresent() && optPost2.isPresent() && optPost3.isPresent()) {
+                Post post1 = optPost1.get();
+                post1.setPhoto(Files.readAllBytes(Path.of("src/main/resources/static/BMW.webp")));
+                Post post2 = optPost2.get();
+                post2.setPhoto(Files.readAllBytes(Path.of("src/main/resources/static/Toyota.webp")));
+                Post post3 = optPost3.get();
+                post3.setPhoto(Files.readAllBytes(Path.of("src/main/resources/static/KIA.webp")));
+                this.update(post1);
+                this.update(post2);
+                this.update(post3);
+            }
         } catch (IOException exc) {
             LOG.error("Exception when insert photos: ", exc);
         }

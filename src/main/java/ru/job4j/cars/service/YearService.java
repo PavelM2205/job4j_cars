@@ -14,7 +14,15 @@ import java.util.Optional;
 public class YearService {
     private final YearRepository yearRepository;
 
-    public List<Year> findAll() {
+    public Year create(Year year) {
+        Optional<Year> optYear = yearRepository.create(year);
+        if (optYear.isEmpty()) {
+            throw new IllegalStateException("The Year has not added");
+        }
+        return optYear.get();
+     }
+
+        public List<Year> findAll() {
         return yearRepository.findAll();
     }
 
@@ -24,5 +32,13 @@ public class YearService {
             throw new NoSuchElementException("Year is not found");
         }
         return optYear.get();
+    }
+
+    public void update(Year year) {
+        yearRepository.update(year);
+    }
+
+    public void delete(int id) {
+        yearRepository.delete(id);
     }
 }

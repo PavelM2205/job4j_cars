@@ -14,7 +14,15 @@ import java.util.Optional;
 public class WheelDriveService {
     private final WheelDriveRepository wheelDriveRepository;
 
-    public List<WheelDrive> findAll() {
+    public WheelDrive create(WheelDrive wheelDrive) {
+        Optional<WheelDrive> optWheelDrive = wheelDriveRepository.create(wheelDrive);
+        if (optWheelDrive.isEmpty()) {
+            throw new IllegalStateException("The WheelDrive has not added");
+        }
+        return optWheelDrive.get();
+    }
+
+        public List<WheelDrive> findAll() {
         return wheelDriveRepository.findAll();
     }
 
@@ -24,5 +32,13 @@ public class WheelDriveService {
             throw new NoSuchElementException("WheelDrive is not found");
         }
         return optWheelDrive.get();
+    }
+
+    public void update(WheelDrive wheelDrive) {
+        wheelDriveRepository.update(wheelDrive);
+    }
+
+    public void delete(int id) {
+        wheelDriveRepository.delete(id);
     }
 }

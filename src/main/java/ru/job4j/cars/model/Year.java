@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
-@Table(name = "year")
+@Table(name = "auto_year")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Year {
@@ -13,5 +13,6 @@ public class Year {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private int id;
+    @Column(name = "year_value")
     private int year;
 }

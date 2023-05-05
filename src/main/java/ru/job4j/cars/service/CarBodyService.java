@@ -14,6 +14,14 @@ import java.util.Optional;
 public class CarBodyService {
     private final CarBodyRepository carBodyRepository;
 
+    public CarBody create(CarBody carBody) {
+        Optional<CarBody> optCarBody = carBodyRepository.create(carBody);
+        if (optCarBody.isEmpty()) {
+            throw new IllegalStateException("The CarBody has not added");
+        }
+        return optCarBody.get();
+    }
+
     public List<CarBody> findAll() {
         return carBodyRepository.findAll();
     }
@@ -24,5 +32,13 @@ public class CarBodyService {
             throw new NoSuchElementException("CarBody is not found");
         }
         return optCarBody.get();
+    }
+
+    public void delete(int id) {
+        carBodyRepository.delete(id);
+    }
+
+    public void update(CarBody carBody) {
+        carBodyRepository.update(carBody);
     }
 }

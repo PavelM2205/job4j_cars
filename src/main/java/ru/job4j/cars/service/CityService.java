@@ -14,7 +14,15 @@ import java.util.Optional;
 public class CityService {
     private final CityRepository cityRepository;
 
-    public List<City> findAll() {
+    public City create(City city) {
+        Optional<City> optCity = cityRepository.create(city);
+        if (optCity.isEmpty()) {
+            throw new IllegalStateException("The City has not added");
+        }
+        return optCity.get();
+    }
+
+        public List<City> findAll() {
         return cityRepository.findAll();
     }
 
@@ -24,5 +32,13 @@ public class CityService {
             throw new NoSuchElementException("City is not found");
         }
         return optCity.get();
+    }
+
+    public void update(City city) {
+        cityRepository.update(city);
+    }
+
+    public void delete(int id) {
+        cityRepository.delete(id);
     }
 }

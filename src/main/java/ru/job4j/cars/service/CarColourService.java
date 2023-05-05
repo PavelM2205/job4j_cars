@@ -14,7 +14,15 @@ import java.util.Optional;
 public class CarColourService {
     private final CarColourRepository carColourRepository;
 
-    public List<CarColour> findAll() {
+    public CarColour create(CarColour carColour) {
+        Optional<CarColour> optCarColour = carColourRepository.create(carColour);
+        if (optCarColour.isEmpty()) {
+            throw new IllegalStateException("The CarColour has not added");
+        }
+        return optCarColour.get();
+    }
+
+        public List<CarColour> findAll() {
         return carColourRepository.findAll();
     }
 
@@ -24,5 +32,13 @@ public class CarColourService {
             throw new NoSuchElementException("CarColour if not found");
         }
         return optCarColour.get();
+    }
+
+    public void update(CarColour carColour) {
+        carColourRepository.update(carColour);
+    }
+
+    public void delete(int id) {
+        carColourRepository.delete(id);
     }
 }

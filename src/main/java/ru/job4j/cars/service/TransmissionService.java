@@ -14,7 +14,17 @@ import java.util.Optional;
 public class TransmissionService {
     private final TransmissionRepository transmissionRepository;
 
-    public List<Transmission> findAll() {
+    public Transmission create(Transmission transmission) {
+        Optional<Transmission> optTransmission = transmissionRepository
+                .create(transmission);
+        if (optTransmission.isEmpty()) {
+            throw new IllegalStateException("The Transmission has not added");
+        }
+        return optTransmission.get();
+    }
+
+
+        public List<Transmission> findAll() {
         return transmissionRepository.findAll();
     }
 
@@ -24,5 +34,13 @@ public class TransmissionService {
             throw new NoSuchElementException("Transmission is not found");
         }
         return optionalTransmission.get();
+    }
+
+    public void update(Transmission transmission) {
+        transmissionRepository.update(transmission);
+    }
+
+    public void delete(int id) {
+        transmissionRepository.delete(id);
     }
 }

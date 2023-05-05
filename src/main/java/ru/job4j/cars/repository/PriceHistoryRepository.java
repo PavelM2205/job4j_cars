@@ -15,8 +15,7 @@ import java.util.Optional;
 public class PriceHistoryRepository {
     private static final Logger LOG = LoggerFactory.getLogger(PriceHistoryRepository.class);
     private static final String FIND_ALL = "From PriceHistory";
-    private static final String FIND_LAST =
-            "From PriceHistory as p WHERE post_id = :fPost_Id AND p.created = MAX(p.created)";
+    public static final String FIND_BY_ID = "FROM PriceHistory WHERE id = :fId";
     private final CrudRepository crudRepository;
 
     public Optional<PriceHistory> create(PriceHistory priceHistory) {
@@ -34,8 +33,18 @@ public class PriceHistoryRepository {
         return crudRepository.query(FIND_ALL, PriceHistory.class);
     }
 
-    public Optional<PriceHistory> findLast(int postId) {
-        return crudRepository.optional(FIND_LAST, Map.of("fPost_id", postId),
+    public Optional<PriceHistory> findById(int id) {
+        return crudRepository.optional(FIND_BY_ID, Map.of("fId", id),
                 PriceHistory.class);
+    }
+
+    public void update(PriceHistory priceHistory) {
+        crudRepository.run(session -> session.update(priceHistory));
+    }
+
+    public void delete(int id) {
+        PriceHistory priceHistory = new PriceHistory();
+        priceHistory.setId(id);
+        crudRepository.run(session -> session.remove(priceHistory));
     }
 }
