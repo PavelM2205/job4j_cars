@@ -66,7 +66,7 @@ class PriceHistoryRepositoryTest {
         assertThat(phFromDB.getId()).isNotEqualTo(0);
         assertThat(phFromDB.getBefore()).isEqualTo(ph.getBefore());
         assertThat(phFromDB.getAfter()).isEqualTo(ph.getAfter());
-        assertThat(phFromDB.getCreated()).isEqualTo(ph.getCreated());
+        assertThat(phFromDB.getCreated()).isEqualToIgnoringNanos(ph.getCreated());
     }
 
     @Test
@@ -85,11 +85,11 @@ class PriceHistoryRepositoryTest {
         assertThat(phFromDB.get(0).getId()).isEqualTo(ph1.getId());
         assertThat(phFromDB.get(0).getBefore()).isEqualTo(ph1.getBefore());
         assertThat(phFromDB.get(0).getAfter()).isEqualTo(ph1.getAfter());
-        assertThat(phFromDB.get(0).getCreated()).isEqualTo(ph1.getCreated());
+        assertThat(phFromDB.get(0).getCreated()).isEqualToIgnoringNanos(ph1.getCreated());
         assertThat(phFromDB.get(1).getId()).isEqualTo(ph2.getId());
         assertThat(phFromDB.get(1).getBefore()).isEqualTo(ph2.getBefore());
         assertThat(phFromDB.get(1).getAfter()).isEqualTo(ph2.getAfter());
-        assertThat(phFromDB.get(1).getCreated()).isEqualTo(ph2.getCreated());
+        assertThat(phFromDB.get(1).getCreated()).isEqualToIgnoringNanos(ph2.getCreated());
     }
 
     @Test
@@ -109,7 +109,7 @@ class PriceHistoryRepositoryTest {
         assertThat(phFromDB.getId()).isEqualTo(changedPh.getId());
         assertThat(phFromDB.getBefore()).isEqualTo(changedPh.getBefore());
         assertThat(phFromDB.getAfter()).isEqualTo(changedPh.getAfter());
-        assertThat(phFromDB.getCreated()).isEqualTo(changedPh.getCreated());
+        assertThat(phFromDB.getCreated()).isEqualToIgnoringNanos(changedPh.getCreated());
     }
 
     @Test
