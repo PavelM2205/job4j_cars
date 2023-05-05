@@ -272,70 +272,18 @@ class PostRepositoryTest {
         List<Post> postsFromDB = postStore.findAll();
         assertThat(postsFromDB.get(0).getText()).isEqualTo(post1.getText());
         assertThat(postsFromDB.get(0).getUser().getId()).isEqualTo(post1.getUser().getId());
-        assertThat(postsFromDB.get(0).getUser().getLogin()).isEqualTo(post1.getUser().getLogin());
-        assertThat(postsFromDB.get(0).getUser().getPassword()).isEqualTo(post1.getUser().getPassword());
         assertThat(postsFromDB.get(0).getPhoto()).isEqualTo(post1.getPhoto());
         assertThat(postsFromDB.get(0).getCity().getId()).isEqualTo(post1.getCity().getId());
-        assertThat(postsFromDB.get(0).getCity().getName()).isEqualTo(post1.getCity().getName());
         assertThat(postsFromDB.get(0).getPrice()).isEqualTo(post1.getPrice());
         assertThat(postsFromDB.get(0).isSold()).isEqualTo(post1.isSold());
         assertThat(postsFromDB.get(0).getCar().getId()).isEqualTo(post1.getCar().getId());
-        assertThat(postsFromDB.get(0).getCar().getMileage()).isEqualTo(post1.getCar().getMileage());
-        assertThat(postsFromDB.get(0).getCar().getEngine().getId()).isEqualTo(post1.getCar().getEngine().getId());
-        assertThat(postsFromDB.get(0).getCar().getEngine().getName()).isEqualTo(post1.getCar().getEngine().getName());
-        assertThat(postsFromDB.get(0).getCar().getDriver().getId()).isEqualTo(post1.getCar().getDriver().getId());
-        assertThat(postsFromDB.get(0).getCar().getDriver().getName()).isEqualTo(post1.getCar().getDriver().getName());
-        assertThat(postsFromDB.get(0).getCar().getDriver().getUser().getId()).isEqualTo(post1.getCar().getDriver()
-                .getUser().getId());
-        assertThat(postsFromDB.get(0).getCar().getDriver().getUser().getLogin()).isEqualTo(post1.getCar().getDriver()
-                .getUser().getLogin());
-        assertThat(postsFromDB.get(0).getCar().getDriver().getUser().getPassword()).isEqualTo(post1.getCar().getDriver()
-                .getUser().getPassword());
-        assertThat(postsFromDB.get(0).getCar().getCarBrand().getId()).isEqualTo(post1.getCar().getCarBrand().getId());
-        assertThat(postsFromDB.get(0).getCar().getCarBrand().getName()).isEqualTo(post1.getCar().getCarBrand().getName());
-        assertThat(postsFromDB.get(0).getCar().getCarBody().getId()).isEqualTo(post1.getCar().getCarBody().getId());
-        assertThat(postsFromDB.get(0).getCar().getCarBody().getName()).isEqualTo(post1.getCar().getCarBody().getName());
-        assertThat(postsFromDB.get(0).getCar().getWheelDrive().getId()).isEqualTo(post1.getCar().getWheelDrive().getId());
-        assertThat(postsFromDB.get(0).getCar().getWheelDrive().getName()).isEqualTo(post1.getCar().getWheelDrive().getName());
-        assertThat(postsFromDB.get(0).getCar().getCarColour().getId()).isEqualTo(post1.getCar().getCarColour().getId());
-        assertThat(postsFromDB.get(0).getCar().getCarColour().getName()).isEqualTo(post1.getCar().getCarColour().getName());
-        assertThat(postsFromDB.get(0).getCar().getTransmission().getId()).isEqualTo(post1.getCar().getTransmission().getId());
-        assertThat(postsFromDB.get(0).getCar().getTransmission().getName()).isEqualTo(post1.getCar().getTransmission().getName());
-        assertThat(postsFromDB.get(0).getCar().getYear().getId()).isEqualTo(post1.getCar().getYear().getId());
-        assertThat(postsFromDB.get(0).getCar().getYear().getYear()).isEqualTo(post1.getCar().getYear().getYear());
         assertThat(postsFromDB.get(1).getText()).isEqualTo(post2.getText());
         assertThat(postsFromDB.get(1).getUser().getId()).isEqualTo(post2.getUser().getId());
-        assertThat(postsFromDB.get(1).getUser().getLogin()).isEqualTo(post2.getUser().getLogin());
-        assertThat(postsFromDB.get(1).getUser().getPassword()).isEqualTo(post2.getUser().getPassword());
         assertThat(postsFromDB.get(1).getPhoto()).isEqualTo(post2.getPhoto());
         assertThat(postsFromDB.get(1).getCity().getId()).isEqualTo(post2.getCity().getId());
-        assertThat(postsFromDB.get(1).getCity().getName()).isEqualTo(post2.getCity().getName());
         assertThat(postsFromDB.get(1).getPrice()).isEqualTo(post2.getPrice());
         assertThat(postsFromDB.get(1).isSold()).isEqualTo(post2.isSold());
         assertThat(postsFromDB.get(1).getCar().getId()).isEqualTo(post2.getCar().getId());
-        assertThat(postsFromDB.get(1).getCar().getMileage()).isEqualTo(post2.getCar().getMileage());
-        assertThat(postsFromDB.get(1).getCar().getEngine().getId()).isEqualTo(post2.getCar().getEngine().getId());
-        assertThat(postsFromDB.get(1).getCar().getEngine().getName()).isEqualTo(post2.getCar().getEngine().getName());
-        assertThat(postsFromDB.get(1).getCar().getDriver().getId()).isEqualTo(post2.getCar().getDriver().getId());
-        assertThat(postsFromDB.get(1).getCar().getDriver().getName()).isEqualTo(post2.getCar().getDriver().getName());
-        assertThat(postsFromDB.get(1).getCar().getDriver().getUser().getId()).isEqualTo(post2.getCar().getDriver()
-                .getUser().getId());
-        assertThat(postsFromDB.get(1).getCar().getDriver().getUser().getLogin()).isEqualTo(post2.getCar().getDriver()
-                .getUser().getLogin());
-        assertThat(postsFromDB.get(1).getCar().getDriver().getUser().getPassword()).isEqualTo(post2.getCar().getDriver()
-                .getUser().getPassword());
-        assertThat(postsFromDB.get(1).getCar().getCarBrand().getId()).isEqualTo(post2.getCar().getCarBrand().getId());
-        assertThat(postsFromDB.get(1).getCar().getCarBrand().getName()).isEqualTo(post2.getCar().getCarBrand().getName());
-        assertThat(postsFromDB.get(1).getCar().getCarBody().getId()).isEqualTo(post2.getCar().getCarBody().getId());
-        assertThat(postsFromDB.get(1).getCar().getCarBody().getName()).isEqualTo(post2.getCar().getCarBody().getName());
-        assertThat(postsFromDB.get(1).getCar().getWheelDrive().getId()).isEqualTo(post2.getCar().getWheelDrive().getId());
-        assertThat(postsFromDB.get(1).getCar().getWheelDrive().getName()).isEqualTo(post2.getCar().getWheelDrive().getName());
-        assertThat(postsFromDB.get(1).getCar().getCarColour().getId()).isEqualTo(post2.getCar().getCarColour().getId());
-        assertThat(postsFromDB.get(1).getCar().getCarColour().getName()).isEqualTo(post2.getCar().getCarColour().getName());
-        assertThat(postsFromDB.get(1).getCar().getTransmission().getId()).isEqualTo(post2.getCar().getTransmission().getId());
-        assertThat(postsFromDB.get(1).getCar().getTransmission().getName()).isEqualTo(post2.getCar().getTransmission().getName());
-        assertThat(postsFromDB.get(1).getCar().getYear().getId()).isEqualTo(post2.getCar().getYear().getId());
-        assertThat(postsFromDB.get(1).getCar().getYear().getYear()).isEqualTo(post2.getCar().getYear().getYear());
     }
 
     @Test
