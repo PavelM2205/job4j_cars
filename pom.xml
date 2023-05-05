@@ -28,6 +28,7 @@
         <db.username></db.username>
         <db.password></db.password>
         <db.driver>org.h2.Driver</db.driver>
+        <db.changeLogFile>${basedir}/src/test/resources/master.xml</db.changeLogFile>
       </properties>
       <activation>
         <activeByDefault>true</activeByDefault>
@@ -40,6 +41,7 @@
         <db.username>postgres</db.username>
         <db.password>password</db.password>
         <db.driver>org.postgresql.Driver</db.driver>
+        <db.changeLogFile>${basedir}/db/master.xml</db.changeLogFile>
       </properties>
     </profile>
 
@@ -221,7 +223,7 @@
         <artifactId>liquibase-maven-plugin</artifactId>
         <version>4.15.0</version>
         <configuration>
-          <changeLogFile>${basedir}/db/master.xml</changeLogFile>
+          <changeLogFile>${db.changeLogFile}</changeLogFile>
           <url>${db.url}</url>
           <username>${db.username}</username>
           <password>${db.password}</password>
