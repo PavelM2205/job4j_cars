@@ -19,7 +19,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                            <a class="nav-link active" aria-current="page" th:href="@{/index}">Главная</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/index}">Все объявления</a>
@@ -120,7 +120,7 @@
                 <form method="POST" th:action="@{/editPost}">
                     <input type="hidden" name="postId" th:value="${post.getId()}">
                     <select class="form-select" aria-label="Пример выбора по умолчанию" name="status">
-                        <option selected>Изменить статус объявления</option>
+                        <option th:value="${post.isSold()}" selected>Изменить статус объявления</option>
                         <option value="false">Активно</option>
                         <option value="true">Продано</option>
                     </select>
